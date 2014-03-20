@@ -18,6 +18,11 @@
 		27E693F318DA9A94006E3ACE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693D218DA9A93006E3ACE /* Cocoa.framework */; };
 		27E693FB18DA9A94006E3ACE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E693F918DA9A94006E3ACE /* InfoPlist.strings */; };
 		27E693FD18DA9A94006E3ACE /* rotatingCubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E693FC18DA9A94006E3ACE /* rotatingCubeTests.m */; };
+		27E6940718DA9B98006E3ACE /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E6940618DA9B98006E3ACE /* OpenGL.framework */; };
+		27ED291718DA9E96009F7966 /* Shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = 27ED291618DA9E96009F7966 /* Shader.fs */; };
+		27ED291918DA9E9B009F7966 /* Shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = 27ED291818DA9E9B009F7966 /* Shader.vs */; };
+		27ED291C18DA9ED2009F7966 /* Shader.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED291B18DA9ED2009F7966 /* Shader.m */; };
+		27ED291F18DA9EF7009F7966 /* ROTOpenGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 27ED291E18DA9EF7009F7966 /* ROTOpenGLView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +55,13 @@
 		27E693F818DA9A94006E3ACE /* rotatingCubeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rotatingCubeTests-Info.plist"; sourceTree = "<group>"; };
 		27E693FA18DA9A94006E3ACE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		27E693FC18DA9A94006E3ACE /* rotatingCubeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rotatingCubeTests.m; sourceTree = "<group>"; };
+		27E6940618DA9B98006E3ACE /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		27ED291618DA9E96009F7966 /* Shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.fs; path = Shader/Shader.fs; sourceTree = "<group>"; };
+		27ED291818DA9E9B009F7966 /* Shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; name = Shader.vs; path = Shader/Shader.vs; sourceTree = "<group>"; };
+		27ED291A18DA9ED2009F7966 /* Shader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shader.h; sourceTree = "<group>"; };
+		27ED291B18DA9ED2009F7966 /* Shader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shader.m; sourceTree = "<group>"; };
+		27ED291D18DA9EF7009F7966 /* ROTOpenGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ROTOpenGLView.h; sourceTree = "<group>"; };
+		27ED291E18DA9EF7009F7966 /* ROTOpenGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ROTOpenGLView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E6940718DA9B98006E3ACE /* OpenGL.framework in Frameworks */,
 				27E693D318DA9A93006E3ACE /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +108,7 @@
 		27E693D118DA9A93006E3ACE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				27E6940618DA9B98006E3ACE /* OpenGL.framework */,
 				27E693D218DA9A93006E3ACE /* Cocoa.framework */,
 				27E693F118DA9A94006E3ACE /* XCTest.framework */,
 				27E693D418DA9A93006E3ACE /* Other Frameworks */,
@@ -118,6 +132,12 @@
 				27E693E418DA9A93006E3ACE /* ROTAppDelegate.h */,
 				27E693E518DA9A93006E3ACE /* ROTAppDelegate.m */,
 				27E693E718DA9A94006E3ACE /* MainMenu.xib */,
+				27ED291A18DA9ED2009F7966 /* Shader.h */,
+				27ED291B18DA9ED2009F7966 /* Shader.m */,
+				27ED291618DA9E96009F7966 /* Shader.fs */,
+				27ED291818DA9E9B009F7966 /* Shader.vs */,
+				27ED291D18DA9EF7009F7966 /* ROTOpenGLView.h */,
+				27ED291E18DA9EF7009F7966 /* ROTOpenGLView.m */,
 				27E693EA18DA9A94006E3ACE /* Images.xcassets */,
 				27E693D918DA9A93006E3ACE /* Supporting Files */,
 			);
@@ -235,6 +255,8 @@
 				27E693EB18DA9A94006E3ACE /* Images.xcassets in Resources */,
 				27E693E318DA9A93006E3ACE /* Credits.rtf in Resources */,
 				27E693E918DA9A94006E3ACE /* MainMenu.xib in Resources */,
+				27ED291718DA9E96009F7966 /* Shader.fs in Resources */,
+				27ED291918DA9E9B009F7966 /* Shader.vs in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +276,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				27E693E618DA9A93006E3ACE /* ROTAppDelegate.m in Sources */,
+				27ED291C18DA9ED2009F7966 /* Shader.m in Sources */,
 				27E693DF18DA9A93006E3ACE /* main.m in Sources */,
+				27ED291F18DA9EF7009F7966 /* ROTOpenGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +491,7 @@
 				27E6940218DA9A94006E3ACE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		27E6940318DA9A94006E3ACE /* Build configuration list for PBXNativeTarget "rotatingCubeTests" */ = {
 			isa = XCConfigurationList;
@@ -475,6 +500,7 @@
 				27E6940518DA9A94006E3ACE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
