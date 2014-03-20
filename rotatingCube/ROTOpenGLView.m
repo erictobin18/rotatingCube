@@ -14,6 +14,9 @@
 
 const GLuint NumVertices = 6;
 
+GLfloat vertices[8][3] = {{1,1,1},{1,1,-1},{1,-1,1},{1,-1,-1},{-1,1,1},{-1,1,-1},{-1,-1,1},{-1,-1,-1}};
+GLuint indices[24] = {0,1,2,3,2,3,6,7,6,7,4,5,4,5,0,1,0,2,6,4,1,3,7,5};
+
 @implementation ROTOpenGLView
 
 -(void)animationTimer
@@ -36,18 +39,17 @@ const GLuint NumVertices = 6;
     
     glClear(GL_COLOR_BUFFER_BIT);
     
+    glBindVertexArray(VAOs[0]);
     
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-    glEnableVertexAttribArray(0);
-    
-    glVertexAttrib1d(1, cos(_framesElapsed/100.));
-    glVertexAttrib1d(2, sin(_framesElapsed/100.));
-    
-    NSLog(@"%f",_framesElapsed/100.);
+    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
+    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(16));
+    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(32));
+    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(48));
+    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(64));
+    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(80));
     
     
-    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+    //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     
     /*
      
@@ -65,43 +67,22 @@ const GLuint NumVertices = 6;
     glGenVertexArrays(1, VAOs); //Frees 1 vertex array label and stores it in VAOs[0]
     glBindVertexArray(VAOs[0]); //Makes first element of VAOs the active vertex array object
 
-    glGenBuffers(6, Buffers); //Frees 6 buffer labels and stores them in Buffers
-    
-    GLfloat a[4][3] = {{1,1,1},{1,1,-1},{1,-1,1},{1,-1,-1}};
-    GLfloat b[4][3] = {{1,-1,1},{1,-1,-1},{-1,-1,1},{-1,-1,-1}};
-    GLfloat c[4][3] = {{-1,-1,1},{-1,-1,-1},{-1,1,1},{-1,1,-1}};
-    GLfloat d[4][3] = {{-1,1,1},{-1,1,-1},{1,1,1},{1,1,-1}};
-    GLfloat e[4][3] = {{1,1,1},{1,-1,1},{-1,-1,1},{-1,1,1}};
-    GLfloat f[4][3] = {{1,1,-1},{1,-1,-1},{-1,-1,-1},{-1,1,-1}};
+    glGenBuffers(2, Buffers); //Frees 1 buffer label and stores it in Buffers[0]
     
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]); //Binds the first element of Buffers to the GL_ARRAY_BUFFER target
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(a),a, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),vertices, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
     
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[1]);
     
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(b),b, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[2]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(c),c, GL_STATIC_DRAW);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[3]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(d),d, GL_STATIC_DRAW);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[4]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(e),e, GL_STATIC_DRAW);
-    
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[5]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(f),f, GL_STATIC_DRAW);
-    
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+    glEnableVertexAttribArray(0);
     
     
     glUseProgram(programObject); //activates the shader program
     
-    
-    
-    
-
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //sets clear color
     
     _isAnimating = TRUE; //preparations complete!
