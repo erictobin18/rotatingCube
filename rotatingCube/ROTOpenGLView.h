@@ -15,6 +15,10 @@
 {
     GLuint programObject;
     Shader *sh;
+    
+    GLuint VAOs[1];
+    GLuint Buffers[6];
+    
 }
 @property BOOL isReadyForDrawing, isAnimating;
 @property GLuint framesElapsed;

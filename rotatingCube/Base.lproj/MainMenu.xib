@@ -670,7 +670,7 @@
                 </subviews>
             </view>
         </window>
-        <customObject id="494" customClass="AppDelegate">
+        <customObject id="494" customClass="ROTAppDelegate">
             <connections>
                 <outlet property="window" destination="371" id="532"/>
             </connections>

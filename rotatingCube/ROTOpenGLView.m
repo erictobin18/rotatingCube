@@ -12,13 +12,6 @@
 
 #define BUFFER_OFFSET(offset) ((void *)(offset))
 
-
-enum VAO_IDs { Triangles, NumVAOs };
-enum Buffer_IDs { ArrayBuffer, NumBuffers };
-enum Attrib_IDs {vPosition = 0};
-
-GLuint  VAOs[NumVAOs];
-GLuint  Buffers[NumBuffers];
 const GLuint NumVertices = 6;
 
 @implementation ROTOpenGLView
@@ -40,11 +33,21 @@ const GLuint NumVertices = 6;
         //NSLog(@"drawRect at 0 frames!");
         [[self openGLContext] setView:self];
     }
+    
     glClear(GL_COLOR_BUFFER_BIT);
     
-    glBindVertexArray(VAOs[Triangles]);
     
-    glDrawArrays(GL_TRIANGLES, 0, 6);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
+    glEnableVertexAttribArray(0);
+    
+    glVertexAttrib1d(1, cos(_framesElapsed/100.));
+    glVertexAttrib1d(2, sin(_framesElapsed/100.));
+    
+    NSLog(@"%f",_framesElapsed/100.);
+    
+    
+    glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     
     /*
      
@@ -55,36 +58,53 @@ const GLuint NumVertices = 6;
 
 - (void)prepareOpenGL
 {
-    sh = [[Shader alloc] initWithShadersInAppBundle:@"Shader"];
-    programObject = [sh program];
+    sh = [[Shader alloc] initWithShadersInAppBundle:@"Shader"]; //create shader OBJ-C class, shader OpenGL object, compile, and link object to shader program
+    programObject = [sh program]; //set programObject variable to shader program (not active in OpenGL yet)
     
     
-    glGenVertexArrays(NumVAOs, VAOs);
-    glBindVertexArray(VAOs[Triangles]);
-    GLfloat  vertices[NumVertices][2] = {
-        { -0.90, -0.90 },  // Triangle 1
-        {  0.85, -0.90 },
-        { -0.90,  0.85 },
-        {  0.90, -0.85 },  // Triangle 2
-        {  0.90,  0.90 },
-        { -0.85,  0.90 }
-    };
-    glGenBuffers(NumBuffers, Buffers);
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[ArrayBuffer]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),vertices, GL_STATIC_DRAW);
+    glGenVertexArrays(1, VAOs); //Frees 1 vertex array label and stores it in VAOs[0]
+    glBindVertexArray(VAOs[0]); //Makes first element of VAOs the active vertex array object
+
+    glGenBuffers(6, Buffers); //Frees 6 buffer labels and stores them in Buffers
+    
+    GLfloat a[4][3] = {{1,1,1},{1,1,-1},{1,-1,1},{1,-1,-1}};
+    GLfloat b[4][3] = {{1,-1,1},{1,-1,-1},{-1,-1,1},{-1,-1,-1}};
+    GLfloat c[4][3] = {{-1,-1,1},{-1,-1,-1},{-1,1,1},{-1,1,-1}};
+    GLfloat d[4][3] = {{-1,1,1},{-1,1,-1},{1,1,1},{1,1,-1}};
+    GLfloat e[4][3] = {{1,1,1},{1,-1,1},{-1,-1,1},{-1,1,1}};
+    GLfloat f[4][3] = {{1,1,-1},{1,-1,-1},{-1,-1,-1},{-1,1,-1}};
+    
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]); //Binds the first element of Buffers to the GL_ARRAY_BUFFER target
+    
+    glBufferData(GL_ARRAY_BUFFER, sizeof(a),a, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
+    
+    
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(b),b, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[2]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(c),c, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[3]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(d),d, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[4]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(e),e, GL_STATIC_DRAW);
+    
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[5]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(f),f, GL_STATIC_DRAW);
     
     
     
-    glUseProgram(programObject);
+    glUseProgram(programObject); //activates the shader program
     
     
-    glVertexAttribPointer(vPosition, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
-    glEnableVertexAttribArray(vPosition);
+    
     
 
-    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //sets clear color
     
-    _isAnimating = TRUE;
+    _isAnimating = TRUE; //preparations complete!
     _isReadyForDrawing = TRUE;
     
     
