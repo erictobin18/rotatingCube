@@ -11,7 +11,7 @@
 #import <OpenGL/gl3.h>
 #import "Shader.h"
 
-@interface FunOpenGLView : NSOpenGLView
+@interface ROTOpenGLView : NSOpenGLView
 {
     GLuint programObject;
     Shader *sh;

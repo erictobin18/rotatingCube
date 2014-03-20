@@ -20,7 +20,7 @@ GLuint  VAOs[NumVAOs];
 GLuint  Buffers[NumBuffers];
 const GLuint NumVertices = 6;
 
-@implementation FunOpenGLView
+@implementation ROTOpenGLView
 
 -(void)animationTimer
 {
