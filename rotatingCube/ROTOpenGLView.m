@@ -8,6 +8,7 @@
 
 #import "ROTOpenGLView.h"
 #import <OpenGL/glext.h>
+#include <math.h>
 
 #define BUFFER_OFFSET(offset) ((void *)(offset))
 
