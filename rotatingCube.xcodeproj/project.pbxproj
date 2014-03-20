@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		276ACB8018DAA59B008FB114 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 276ACB7E18DAA59B008FB114 /* MainMenu.xib */; };
 		27E693D318DA9A93006E3ACE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693D218DA9A93006E3ACE /* Cocoa.framework */; };
 		27E693DD18DA9A93006E3ACE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E693DB18DA9A93006E3ACE /* InfoPlist.strings */; };
 		27E693DF18DA9A93006E3ACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E693DE18DA9A93006E3ACE /* main.m */; };
 		27E693E318DA9A93006E3ACE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 27E693E118DA9A93006E3ACE /* Credits.rtf */; };
 		27E693E618DA9A93006E3ACE /* ROTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E693E518DA9A93006E3ACE /* ROTAppDelegate.m */; };
+		27E693E918DA9A94006E3ACE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E693E718DA9A94006E3ACE /* MainMenu.xib */; };
 		27E693EB18DA9A94006E3ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E693EA18DA9A94006E3ACE /* Images.xcassets */; };
 		27E693F218DA9A94006E3ACE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693F118DA9A94006E3ACE /* XCTest.framework */; };
 		27E693F318DA9A94006E3ACE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693D218DA9A93006E3ACE /* Cocoa.framework */; };
@@ -36,7 +36,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		276ACB7F18DAA59B008FB114 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		27E693CF18DA9A93006E3ACE /* rotatingCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rotatingCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E693D218DA9A93006E3ACE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27E693D518DA9A93006E3ACE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -49,6 +48,7 @@
 		27E693E218DA9A93006E3ACE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		27E693E418DA9A93006E3ACE /* ROTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ROTAppDelegate.h; sourceTree = "<group>"; };
 		27E693E518DA9A93006E3ACE /* ROTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ROTAppDelegate.m; sourceTree = "<group>"; };
+		27E693E818DA9A94006E3ACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		27E693EA18DA9A94006E3ACE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		27E693F018DA9A94006E3ACE /* rotatingCubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rotatingCubeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E693F118DA9A94006E3ACE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -131,7 +131,7 @@
 			children = (
 				27E693E418DA9A93006E3ACE /* ROTAppDelegate.h */,
 				27E693E518DA9A93006E3ACE /* ROTAppDelegate.m */,
-				276ACB7E18DAA59B008FB114 /* MainMenu.xib */,
+				27E693E718DA9A94006E3ACE /* MainMenu.xib */,
 				27ED291A18DA9ED2009F7966 /* Shader.h */,
 				27ED291B18DA9ED2009F7966 /* Shader.m */,
 				27ED291618DA9E96009F7966 /* Shader.fs */,
@@ -254,9 +254,9 @@
 				27E693DD18DA9A93006E3ACE /* InfoPlist.strings in Resources */,
 				27E693EB18DA9A94006E3ACE /* Images.xcassets in Resources */,
 				27E693E318DA9A93006E3ACE /* Credits.rtf in Resources */,
+				27E693E918DA9A94006E3ACE /* MainMenu.xib in Resources */,
 				27ED291718DA9E96009F7966 /* Shader.fs in Resources */,
 				27ED291918DA9E9B009F7966 /* Shader.vs in Resources */,
-				276ACB8018DAA59B008FB114 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +301,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		276ACB7E18DAA59B008FB114 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				276ACB7F18DAA59B008FB114 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
-		};
 		27E693DB18DA9A93006E3ACE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -323,6 +315,14 @@
 				27E693E218DA9A93006E3ACE /* en */,
 			);
 			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		27E693E718DA9A94006E3ACE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E693E818DA9A94006E3ACE /* Base */,
+			);
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 		27E693F918DA9A94006E3ACE /* InfoPlist.strings */ = {
