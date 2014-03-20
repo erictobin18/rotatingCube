@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27E693D318DA9A93006E3ACE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693D218DA9A93006E3ACE /* Cocoa.framework */; };
+		27E693DD18DA9A93006E3ACE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E693DB18DA9A93006E3ACE /* InfoPlist.strings */; };
+		27E693DF18DA9A93006E3ACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E693DE18DA9A93006E3ACE /* main.m */; };
+		27E693E318DA9A93006E3ACE /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 27E693E118DA9A93006E3ACE /* Credits.rtf */; };
+		27E693E618DA9A93006E3ACE /* ROTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E693E518DA9A93006E3ACE /* ROTAppDelegate.m */; };
+		27E693E918DA9A94006E3ACE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27E693E718DA9A94006E3ACE /* MainMenu.xib */; };
+		27E693EB18DA9A94006E3ACE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27E693EA18DA9A94006E3ACE /* Images.xcassets */; };
+		27E693F218DA9A94006E3ACE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693F118DA9A94006E3ACE /* XCTest.framework */; };
+		27E693F318DA9A94006E3ACE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693D218DA9A93006E3ACE /* Cocoa.framework */; };
+		27E693FB18DA9A94006E3ACE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E693F918DA9A94006E3ACE /* InfoPlist.strings */; };
+		27E693FD18DA9A94006E3ACE /* rotatingCubeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E693FC18DA9A94006E3ACE /* rotatingCubeTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		27E693F418DA9A94006E3ACE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27E693C718DA9A93006E3ACE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27E693CE18DA9A93006E3ACE;
+			remoteInfo = rotatingCube;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27E693CF18DA9A93006E3ACE /* rotatingCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rotatingCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E693D218DA9A93006E3ACE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		27E693D518DA9A93006E3ACE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		27E693D618DA9A93006E3ACE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		27E693D718DA9A93006E3ACE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		27E693DA18DA9A93006E3ACE /* rotatingCube-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rotatingCube-Info.plist"; sourceTree = "<group>"; };
+		27E693DC18DA9A93006E3ACE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E693DE18DA9A93006E3ACE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		27E693E018DA9A93006E3ACE /* rotatingCube-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rotatingCube-Prefix.pch"; sourceTree = "<group>"; };
+		27E693E218DA9A93006E3ACE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		27E693E418DA9A93006E3ACE /* ROTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ROTAppDelegate.h; sourceTree = "<group>"; };
+		27E693E518DA9A93006E3ACE /* ROTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ROTAppDelegate.m; sourceTree = "<group>"; };
+		27E693E818DA9A94006E3ACE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		27E693EA18DA9A94006E3ACE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		27E693F018DA9A94006E3ACE /* rotatingCubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = rotatingCubeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E693F118DA9A94006E3ACE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		27E693F818DA9A94006E3ACE /* rotatingCubeTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "rotatingCubeTests-Info.plist"; sourceTree = "<group>"; };
+		27E693FA18DA9A94006E3ACE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		27E693FC18DA9A94006E3ACE /* rotatingCubeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rotatingCubeTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27E693CC18DA9A93006E3ACE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E693D318DA9A93006E3ACE /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27E693ED18DA9A94006E3ACE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E693F318DA9A94006E3ACE /* Cocoa.framework in Frameworks */,
+				27E693F218DA9A94006E3ACE /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27E693C618DA9A93006E3ACE = {
+			isa = PBXGroup;
+			children = (
+				27E693D818DA9A93006E3ACE /* rotatingCube */,
+				27E693F618DA9A94006E3ACE /* rotatingCubeTests */,
+				27E693D118DA9A93006E3ACE /* Frameworks */,
+				27E693D018DA9A93006E3ACE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		27E693D018DA9A93006E3ACE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				27E693CF18DA9A93006E3ACE /* rotatingCube.app */,
+				27E693F018DA9A94006E3ACE /* rotatingCubeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		27E693D118DA9A93006E3ACE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27E693D218DA9A93006E3ACE /* Cocoa.framework */,
+				27E693F118DA9A94006E3ACE /* XCTest.framework */,
+				27E693D418DA9A93006E3ACE /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		27E693D418DA9A93006E3ACE /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27E693D518DA9A93006E3ACE /* AppKit.framework */,
+				27E693D618DA9A93006E3ACE /* CoreData.framework */,
+				27E693D718DA9A93006E3ACE /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		27E693D818DA9A93006E3ACE /* rotatingCube */ = {
+			isa = PBXGroup;
+			children = (
+				27E693E418DA9A93006E3ACE /* ROTAppDelegate.h */,
+				27E693E518DA9A93006E3ACE /* ROTAppDelegate.m */,
+				27E693E718DA9A94006E3ACE /* MainMenu.xib */,
+				27E693EA18DA9A94006E3ACE /* Images.xcassets */,
+				27E693D918DA9A93006E3ACE /* Supporting Files */,
+			);
+			path = rotatingCube;
+			sourceTree = "<group>";
+		};
+		27E693D918DA9A93006E3ACE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27E693DA18DA9A93006E3ACE /* rotatingCube-Info.plist */,
+				27E693DB18DA9A93006E3ACE /* InfoPlist.strings */,
+				27E693DE18DA9A93006E3ACE /* main.m */,
+				27E693E018DA9A93006E3ACE /* rotatingCube-Prefix.pch */,
+				27E693E118DA9A93006E3ACE /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		27E693F618DA9A94006E3ACE /* rotatingCubeTests */ = {
+			isa = PBXGroup;
+			children = (
+				27E693FC18DA9A94006E3ACE /* rotatingCubeTests.m */,
+				27E693F718DA9A94006E3ACE /* Supporting Files */,
+			);
+			path = rotatingCubeTests;
+			sourceTree = "<group>";
+		};
+		27E693F718DA9A94006E3ACE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				27E693F818DA9A94006E3ACE /* rotatingCubeTests-Info.plist */,
+				27E693F918DA9A94006E3ACE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		27E693CE18DA9A93006E3ACE /* rotatingCube */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27E6940018DA9A94006E3ACE /* Build configuration list for PBXNativeTarget "rotatingCube" */;
+			buildPhases = (
+				27E693CB18DA9A93006E3ACE /* Sources */,
+				27E693CC18DA9A93006E3ACE /* Frameworks */,
+				27E693CD18DA9A93006E3ACE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = rotatingCube;
+			productName = rotatingCube;
+			productReference = 27E693CF18DA9A93006E3ACE /* rotatingCube.app */;
+			productType = "com.apple.product-type.application";
+		};
+		27E693EF18DA9A94006E3ACE /* rotatingCubeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27E6940318DA9A94006E3ACE /* Build configuration list for PBXNativeTarget "rotatingCubeTests" */;
+			buildPhases = (
+				27E693EC18DA9A94006E3ACE /* Sources */,
+				27E693ED18DA9A94006E3ACE /* Frameworks */,
+				27E693EE18DA9A94006E3ACE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27E693F518DA9A94006E3ACE /* PBXTargetDependency */,
+			);
+			name = rotatingCubeTests;
+			productName = rotatingCubeTests;
+			productReference = 27E693F018DA9A94006E3ACE /* rotatingCubeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		27E693C718DA9A93006E3ACE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ROT;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = omnisciendus;
+				TargetAttributes = {
+					27E693EF18DA9A94006E3ACE = {
+						TestTargetID = 27E693CE18DA9A93006E3ACE;
+					};
+				};
+			};
+			buildConfigurationList = 27E693CA18DA9A93006E3ACE /* Build configuration list for PBXProject "rotatingCube" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 27E693C618DA9A93006E3ACE;
+			productRefGroup = 27E693D018DA9A93006E3ACE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				27E693CE18DA9A93006E3ACE /* rotatingCube */,
+				27E693EF18DA9A94006E3ACE /* rotatingCubeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		27E693CD18DA9A93006E3ACE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E693DD18DA9A93006E3ACE /* InfoPlist.strings in Resources */,
+				27E693EB18DA9A94006E3ACE /* Images.xcassets in Resources */,
+				27E693E318DA9A93006E3ACE /* Credits.rtf in Resources */,
+				27E693E918DA9A94006E3ACE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27E693EE18DA9A94006E3ACE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E693FB18DA9A94006E3ACE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27E693CB18DA9A93006E3ACE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E693E618DA9A93006E3ACE /* ROTAppDelegate.m in Sources */,
+				27E693DF18DA9A93006E3ACE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27E693EC18DA9A94006E3ACE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27E693FD18DA9A94006E3ACE /* rotatingCubeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27E693F518DA9A94006E3ACE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27E693CE18DA9A93006E3ACE /* rotatingCube */;
+			targetProxy = 27E693F418DA9A94006E3ACE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		27E693DB18DA9A93006E3ACE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E693DC18DA9A93006E3ACE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		27E693E118DA9A93006E3ACE /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E693E218DA9A93006E3ACE /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		27E693E718DA9A94006E3ACE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E693E818DA9A94006E3ACE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		27E693F918DA9A94006E3ACE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				27E693FA18DA9A94006E3ACE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		27E693FE18DA9A94006E3ACE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		27E693FF18DA9A94006E3ACE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		27E6940118DA9A94006E3ACE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rotatingCube/rotatingCube-Prefix.pch";
+				INFOPLIST_FILE = "rotatingCube/rotatingCube-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		27E6940218DA9A94006E3ACE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rotatingCube/rotatingCube-Prefix.pch";
+				INFOPLIST_FILE = "rotatingCube/rotatingCube-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		27E6940418DA9A94006E3ACE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/rotatingCube.app/Contents/MacOS/rotatingCube";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rotatingCube/rotatingCube-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "rotatingCubeTests/rotatingCubeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		27E6940518DA9A94006E3ACE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/rotatingCube.app/Contents/MacOS/rotatingCube";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "rotatingCube/rotatingCube-Prefix.pch";
+				INFOPLIST_FILE = "rotatingCubeTests/rotatingCubeTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		27E693CA18DA9A93006E3ACE /* Build configuration list for PBXProject "rotatingCube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E693FE18DA9A94006E3ACE /* Debug */,
+				27E693FF18DA9A94006E3ACE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27E6940018DA9A94006E3ACE /* Build configuration list for PBXNativeTarget "rotatingCube" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E6940118DA9A94006E3ACE /* Debug */,
+				27E6940218DA9A94006E3ACE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		27E6940318DA9A94006E3ACE /* Build configuration list for PBXNativeTarget "rotatingCubeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27E6940418DA9A94006E3ACE /* Debug */,
+				27E6940518DA9A94006E3ACE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 27E693C718DA9A93006E3ACE /* Project object */;
+}
