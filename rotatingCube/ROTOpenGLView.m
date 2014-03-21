@@ -11,11 +11,12 @@
 #include <math.h>
 
 #define BUFFER_OFFSET(offset) ((void *)(offset))
+#define RESTART_CHAR 0xFFFFFFFF
 
 const GLuint NumVertices = 6;
 
-GLfloat vertices[8][3] = {{1,1,1},{1,1,-1},{1,-1,1},{1,-1,-1},{-1,1,1},{-1,1,-1},{-1,-1,1},{-1,-1,-1}};
-GLuint indices[24] = {0,1,2,3,2,3,6,7,6,7,4,5,4,5,0,1,0,2,6,4,1,3,7,5};
+GLfloat vertices[8][3] = {{.1,.1,.1},{.1,.1,-.1},{.1,-.1,.1},{.1,-.1,-.1},{-.1,.1,.1},{-.1,.1,-.1},{-.1,-.1,.1},{-.1,-.1,-.1}};
+GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,6,4,RESTART_CHAR,1,3,7,5};
 
 @implementation ROTOpenGLView
 
@@ -41,12 +42,12 @@ GLuint indices[24] = {0,1,2,3,2,3,6,7,6,7,4,5,4,5,0,1,0,2,6,4,1,3,7,5};
     
     glBindVertexArray(VAOs[0]);
     
-    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
-    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(16));
-    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(32));
-    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(48));
-    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(64));
-    glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(80));
+    glDrawElements(GL_TRIANGLE_STRIP, 15, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
+    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(16));
+    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(32));
+    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(48));
+    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(64));
+    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(80));
     
     
     //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
@@ -84,6 +85,9 @@ GLuint indices[24] = {0,1,2,3,2,3,6,7,6,7,4,5,4,5,0,1,0,2,6,4,1,3,7,5};
     glUseProgram(programObject); //activates the shader program
     
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //sets clear color
+    
+    glEnable(GL_PRIMITIVE_RESTART);
+    glPrimitiveRestartIndex(RESTART_CHAR);
     
     _isAnimating = TRUE; //preparations complete!
     _isReadyForDrawing = TRUE;
