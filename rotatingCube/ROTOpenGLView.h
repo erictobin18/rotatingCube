@@ -17,7 +17,7 @@
     Shader *sh;
     
     GLuint VAOs[1];
-    GLuint Buffers[2];
+    GLuint Buffers[3];
     
 }
 @property BOOL isReadyForDrawing, isAnimating;

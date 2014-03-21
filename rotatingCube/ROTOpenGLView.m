@@ -15,8 +15,30 @@
 
 const GLuint NumVertices = 6;
 
-GLfloat vertices[8][3] = {{.1,.1,.1},{.1,.1,-.1},{.1,-.1,.1},{.1,-.1,-.1},{-.1,.1,.1},{-.1,.1,-.1},{-.1,-.1,.1},{-.1,-.1,-.1}};
-GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,6,4,RESTART_CHAR,1,3,7,5};
+GLfloat vertices[8][3] = {
+                            {.5,.5,.5},
+                            {.5,.5,-.5},
+                            {.5,-.5,.5},
+                            {.5,-.5,-.5},
+                            {-.5,.5,.5},
+                            {-.5,.5,-.5},
+                            {-.5,-.5,.5},
+                            {-.5,-.5,-.5}
+};
+GLfloat colors[8][4] = {
+                            {0.,0.,1,1.},
+                            {0.,1,0.,1.},
+                            {1,0.,0.,1.},
+                            {0.,1,1,1.},
+                            {1,1,0.,1.},
+                            {1,0.,1,1.},
+                            {0.,0.,0.,1.},
+                            {1,1,1,1.},
+};
+
+GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,4,6,RESTART_CHAR,1,5,3,7};
+
+GLfloat rotation = 0.0f;
 
 @implementation ROTOpenGLView
 
@@ -37,12 +59,31 @@ GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,6,4,RESTART_CHAR,1,3,
         //NSLog(@"drawRect at 0 frames!");
         [[self openGLContext] setView:self];
     }
+    if((_framesElapsed & 0x8) == 8)
+    {
+        rotation += ((arc4random()/2147483648.) - .75f)/100.;
+        //NSLog(@"%f",rotation);
+    }
+    GLfloat matrix[4][4] = {
+                {cos(rotation),                             0,                          -sin(rotation),                         0.},
+                {-sin(rotation)*sin(_framesElapsed/50.),    cos(_framesElapsed/50.),    -sin(_framesElapsed/50.)*cos(rotation), 0.},
+                {sin(rotation)*cos(_framesElapsed/50.),     sin(_framesElapsed/50.),    cos(_framesElapsed/50.)*cos(rotation),  0.},
+                {0.,                                        0.,                         0.,                                     1.}
+    };
     
     glClear(GL_COLOR_BUFFER_BIT);
     
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[2]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(matrix), matrix, GL_DYNAMIC_DRAW);
+    
+    glVertexAttrib4fv(2, matrix[0]);
+    glVertexAttrib4fv(3, matrix[1]);
+    glVertexAttrib4fv(4, matrix[2]);
+    glVertexAttrib4fv(5, matrix[3]);
+    
     glBindVertexArray(VAOs[0]);
     
-    glDrawElements(GL_TRIANGLE_STRIP, 15, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
+    glDrawElements(GL_TRIANGLE_STRIP, 20, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
     //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(16));
     //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(32));
     //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(48));
@@ -68,11 +109,12 @@ GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,6,4,RESTART_CHAR,1,3,
     glGenVertexArrays(1, VAOs); //Frees 1 vertex array label and stores it in VAOs[0]
     glBindVertexArray(VAOs[0]); //Makes first element of VAOs the active vertex array object
 
-    glGenBuffers(2, Buffers); //Frees 1 buffer label and stores it in Buffers[0]
+    glGenBuffers(3, Buffers); //Frees 1 buffer label and stores it in Buffers[0]
     
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]); //Binds the first element of Buffers to the GL_ARRAY_BUFFER target
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices),vertices, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(colors),vertices, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
+    glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(colors), colors);
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[1]);
     
@@ -80,6 +122,9 @@ GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,6,4,RESTART_CHAR,1,3,
     
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(0);
+    
+    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(vertices)));
+    glEnableVertexAttribArray(1);
     
     
     glUseProgram(programObject); //activates the shader program
@@ -91,6 +136,9 @@ GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,6,4,RESTART_CHAR,1,3,
     
     _isAnimating = TRUE; //preparations complete!
     _isReadyForDrawing = TRUE;
+    
+    glEnable(GL_CULL_FACE);
+    //glCullFace(GL_BACK);
     
     
 }
