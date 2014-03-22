@@ -655,7 +655,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="360" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <openGLView fixedFrame="YES" depthSize="24bit" useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-pE-V6m" customClass="ROTOpenGLView">
+                    <openGLView fixedFrame="YES" depthSize="24bit" useAuxiliaryDepthBufferStencil="NO" useDoubleBufferingEnabled="YES" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gEG-pE-V6m" customClass="ROTOpenGLView">
                         <rect key="frame" x="0.0" y="0.0" width="360" height="360"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </openGLView>

@@ -21,7 +21,7 @@
 //---------------------------------------------------------------------------------
 
 static GLuint LoadShader(GLenum theShaderType,
-							  const GLcharARB **theShader,
+							  const GLchar **theShader,
 							  GLint *theShaderCompiled) 
 {
 	GLuint shaderObject = 0;
@@ -35,11 +35,11 @@ static GLuint LoadShader(GLenum theShaderType,
 		glShaderSource(shaderObject, 1, theShader, NULL);
 		glCompileShader(shaderObject);
 		
-		glGetShaderiv(shaderObject,GL_OBJECT_INFO_LOG_LENGTH_ARB,&infoLogLength);
+		glGetShaderiv(shaderObject,GL_INFO_LOG_LENGTH,&infoLogLength);
 		
 		if( infoLogLength > 0 ) 
 		{
-			GLcharARB *infoLog = (GLcharARB *)malloc(infoLogLength);
+			GLchar *infoLog = (GLchar *)malloc(infoLogLength);
 			
 			if( infoLog != NULL )
 			{
@@ -54,7 +54,7 @@ static GLuint LoadShader(GLenum theShaderType,
 			} // if
 		} // if
 		
-		glGetShaderiv(shaderObject,GL_OBJECT_COMPILE_STATUS_ARB,theShaderCompiled);
+		glGetShaderiv(shaderObject,GL_COMPILE_STATUS,theShaderCompiled);
 		
 		if( *theShaderCompiled == 0 )
 		{
@@ -82,7 +82,7 @@ static void LinkProgram(GLuint program,
 	
 	if( infoLogLength >  0 ) 
 	{
-		GLcharARB *infoLog = (GLcharARB *)malloc(infoLogLength);
+		GLchar *infoLog = (GLchar *)malloc(infoLogLength);
 		
 		if( infoLog != NULL)
 		{
@@ -117,7 +117,7 @@ static void LinkProgram(GLuint program,
 
 //---------------------------------------------------------------------------------
 
-- (GLcharARB *) getShaderSourceFromResource:(NSString *)theShaderResourceName 
+- (GLchar *) getShaderSourceFromResource:(NSString *)theShaderResourceName
 								  extension:(NSString *)theExtension
 {
 	NSBundle  *appBundle = [NSBundle mainBundle];
@@ -126,10 +126,10 @@ static void LinkProgram(GLuint program,
     
 	NSString  *shaderTempSource = [appBundle pathForResource:theShaderResourceName 
 													  ofType:theExtension];
-	GLcharARB *shaderSource = NULL;
+	GLchar *shaderSource = NULL;
 	
 	shaderTempSource = [NSString stringWithContentsOfFile:shaderTempSource encoding:NSASCIIStringEncoding error:NULL];
-	shaderSource     = (GLcharARB *)[shaderTempSource cStringUsingEncoding:NSASCIIStringEncoding];
+	shaderSource     = (GLchar *)[shaderTempSource cStringUsingEncoding:NSASCIIStringEncoding];
 	
 	return  shaderSource;
 } // getShaderSourceFromResource
@@ -153,7 +153,7 @@ static void LinkProgram(GLuint program,
 //---------------------------------------------------------------------------------
 
 - (GLuint) loadShader:(GLenum)theShaderType
-			  shaderSource:(const GLcharARB **)theShaderSource
+			  shaderSource:(const GLchar **)theShaderSource
 {
 	GLint       shaderCompiled = 0;
 	GLuint shaderHandle   = LoadShader(theShaderType,
@@ -211,14 +211,14 @@ static void LinkProgram(GLuint program,
 	
 	// Load and compile both shaders
 	
-	GLuint vertexShader = [self loadShader:GL_VERTEX_SHADER_ARB
+	GLuint vertexShader = [self loadShader:GL_VERTEX_SHADER
 								   shaderSource:&vertexShaderSource];
 	
 	// Ensure vertex shader compiled
 	
 	if( vertexShader != 0 )
 	{
-		GLuint fragmentShader = [self loadShader:GL_FRAGMENT_SHADER_ARB
+		GLuint fragmentShader = [self loadShader:GL_FRAGMENT_SHADER
 										 shaderSource:&fragmentShaderSource];
 		
 		// Ensure fragment shader compiled
@@ -277,28 +277,6 @@ static void LinkProgram(GLuint program,
 
 //---------------------------------------------------------------------------------
 
-#pragma mark -- Deallocating Resources --
-
-//---------------------------------------------------------------------------------
-
-//- (void) dealloc
-//{
-//	// Delete OpenGL resources
-//	
-//	if( programObject )
-//	{
-//		glDeleteObjectARB(programObject);
-//		
-//		programObject = NULL;
-//	} // if
-//	
-//	//Dealloc the superclass
-//	
-//	[super dealloc];
-//} // dealloc
-
-//---------------------------------------------------------------------------------
-
 #pragma mark -- Accessors --
 
 //---------------------------------------------------------------------------------
@@ -314,7 +292,7 @@ static void LinkProgram(GLuint program,
 
 //---------------------------------------------------------------------------------
 
-- (GLint) getUniformLocation:(const GLcharARB *)theUniformName
+- (GLint) getUniformLocation:(const GLchar *)theUniformName
 {
 	GLint uniformLoacation = glGetUniformLocation(program,theUniformName);
 	

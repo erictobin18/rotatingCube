@@ -26,14 +26,14 @@ GLfloat vertices[8][3] = {
                             {-.5,-.5,-.5}
 };
 GLfloat colors[8][4] = {
-                            {0.,0.,1,1.},
-                            {0.,1,0.,1.},
-                            {1,0.,0.,1.},
-                            {0.,1,1,1.},
-                            {1,1,0.,1.},
-                            {1,0.,1,1.},
-                            {0.,0.,0.,1.},
                             {1,1,1,1.},
+                            {1,1,0,1.},
+                            {1,0,1,1.},
+                            {1,0,0,1.},
+                            {0,1,1,1.},
+                            {0,1,0,1.},
+                            {0,0,1,1.},
+                            {0,0,0,1.},
 };
 
 GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,4,6,RESTART_CHAR,1,5,3,7};
@@ -56,14 +56,11 @@ GLfloat rotation = 0.0f;
 {
     if (_framesElapsed < 1) //this needs to be called any time the window resizes.
     {
-        //NSLog(@"drawRect at 0 frames!");
         [[self openGLContext] setView:self];
     }
     if((_framesElapsed & 0x8) == 8)
-    {
         rotation += ((arc4random()/2147483648.) - .75f)/100.;
-        //NSLog(@"%f",rotation);
-    }
+    
     GLfloat matrix[4][4] = {
                 {cos(rotation),                             0,                          -sin(rotation),                         0.},
                 {-sin(rotation)*sin(_framesElapsed/50.),    cos(_framesElapsed/50.),    -sin(_framesElapsed/50.)*cos(rotation), 0.},
@@ -71,7 +68,7 @@ GLfloat rotation = 0.0f;
                 {0.,                                        0.,                         0.,                                     1.}
     };
     
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[2]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(matrix), matrix, GL_DYNAMIC_DRAW);
@@ -84,20 +81,8 @@ GLfloat rotation = 0.0f;
     glBindVertexArray(VAOs[0]);
     
     glDrawElements(GL_TRIANGLE_STRIP, 20, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
-    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(16));
-    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(32));
-    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(48));
-    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(64));
-    //glDrawElements(GL_TRIANGLE_FAN, 4, GL_UNSIGNED_INT, BUFFER_OFFSET(80));
     
-    
-    //glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
-    
-    /*
-     
-     L_POINTS, GL_LINES, GL_LINE_STRIP, GL_LINE_LOOP, GL_TRIANGLES, GL_TRIANGLE_STRIP, GL_TRIANGLE_FAN, and GL_PATCHES.
-     */
-    glFlush();
+    [[self openGLContext] flushBuffer];
 }
 
 - (void)prepareOpenGL
@@ -130,6 +115,7 @@ GLfloat rotation = 0.0f;
     glUseProgram(programObject); //activates the shader program
     
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //sets clear color
+    glClearDepth(0.0f);
     
     glEnable(GL_PRIMITIVE_RESTART);
     glPrimitiveRestartIndex(RESTART_CHAR);
@@ -139,6 +125,10 @@ GLfloat rotation = 0.0f;
     
     glEnable(GL_CULL_FACE);
     //glCullFace(GL_BACK);
+    
+    glDepthMask(GL_TRUE);
+    
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
     
 }
@@ -159,7 +149,7 @@ GLfloat rotation = 0.0f;
 {
     NSOpenGLPixelFormatAttribute attrs[] =
     {
-        //NSOpenGLPFADoubleBuffer,
+        NSOpenGLPFADoubleBuffer,
         NSOpenGLPFADepthSize, 24,
         // Must specify the 3.2 Core Profile to use OpenGL 3.2
         NSOpenGLPFAOpenGLProfile,
