@@ -80,7 +80,10 @@ GLfloat rotation = 0.0f;
     
     glBindVertexArray(VAOs[0]);
     
+    
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
     glDrawElements(GL_TRIANGLE_STRIP, 20, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
+
     
     [[self openGLContext] flushBuffer];
 }
@@ -127,8 +130,6 @@ GLfloat rotation = 0.0f;
     //glCullFace(GL_BACK);
     
     glDepthMask(GL_TRUE);
-    
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     
     
 }
