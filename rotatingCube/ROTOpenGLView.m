@@ -50,6 +50,7 @@ GLfloat rotation = 0.0f;
         [self drawRect:[self bounds]];
         //NSLog(@"Frames: %d",_framesElapsed);
     }
+    [self reportError];
 }
 
 -(void)drawRect:(NSRect)dirtyRect
@@ -178,4 +179,45 @@ GLfloat rotation = 0.0f;
 
 }
 
+-(void)reportError
+{
+    int error = glGetError();
+    if (error != 0)
+    {
+        switch (error)
+        {
+            case 0x0500:
+                NSLog(@"GL_INVALID_ENUM​ thrown at frame %d",_framesElapsed);
+                _isAnimating = FALSE;
+                break;
+            case 0x0501:
+                NSLog(@"GL_INVALID_VALUE​ thrown at frame %d",_framesElapsed);
+                _isAnimating = FALSE;
+                break;
+            case 0x0502:
+                NSLog(@"GL_INVALID_OPERATION​ thrown at frame %d",_framesElapsed);
+                _isAnimating = FALSE;
+                break;
+            case 0x0503:
+                NSLog(@"GL_STACK_OVERFLOW​​ thrown at frame %d",_framesElapsed);
+                _isAnimating = FALSE;
+                break;
+            case 0x0504:
+                NSLog(@"GL_STACK_UNDERFLOW​ thrown at frame %d",_framesElapsed);
+                _isAnimating = FALSE;
+                break;
+            case 0x0505:
+                NSLog(@"GL_OUT_OF_MEMORY​​ thrown at frame %d",_framesElapsed);
+                _isAnimating = FALSE;
+                break;
+            case 0x0506:
+                NSLog(@"GL_INVALID_FRAMEBUFFER_OPERATION​​ thrown at frame %d",_framesElapsed);
+                _isAnimating = FALSE;
+                break;
+                
+            default:
+                break;
+        }
+    }
+}
 @end

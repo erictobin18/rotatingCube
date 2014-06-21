@@ -25,5 +25,6 @@
 
 - (void) prepareOpenGL;
 - (void) awakeFromNib;
+- (void) reportError;
 
 @end
