@@ -243,9 +243,7 @@ static void LinkProgram(GLuint program,
 
 - (id) initWithShadersInAppBundle:(NSString *)theShadersName
 {
-	self = [super init];
-	
-	if( self)
+	if ( self = [super init] )
 	{
 		BOOL  loadedShaders = NO;
 		
@@ -253,17 +251,17 @@ static void LinkProgram(GLuint program,
 		
 		[self getVertexShaderSourceFromResource:theShadersName];
 		
-		if( vertexShaderSource != NULL )
+		if ( vertexShaderSource != NULL )
 		{
 			[self getFragmentShaderSourceFromResource:theShadersName];
 			
-			if( fragmentShaderSource != NULL )
+			if ( fragmentShaderSource != NULL )
 			{
                 //NSLog(@"%s",vertexShaderSource);
                 //NSLog(@"%s",fragmentShaderSource);
 				loadedShaders = [self setProgramObject];
 				
-				if( !loadedShaders)
+				if ( !loadedShaders )
 				{
 					NSLog(@">> WARNING: Failed to load GLSL \"%@\" fragment & vertex shaders!\n", 
 						  theShadersName);
