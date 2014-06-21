@@ -49,8 +49,9 @@ GLfloat rotation = 0.0f;
         _framesElapsed++;
         [self drawRect:[self bounds]];
         //NSLog(@"Frames: %d",_framesElapsed);
+        [self reportError];
     }
-    [self reportError];
+    
 }
 
 -(void)drawRect:(NSRect)dirtyRect
