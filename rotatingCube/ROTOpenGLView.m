@@ -117,6 +117,34 @@ GLfloat rotation = 0.0f;
     glEnableVertexAttribArray(1);
     
     
+    _isAnimating = TRUE; //preparations complete!
+    _isReadyForDrawing = TRUE;
+    
+    ////////////////
+    //Texture Init
+    _verbose = FALSE;
+    
+    glGenTextures(1, Textures); //Frees 1 vertex array label and stores it in Textures[0]
+    [self reportError];
+    glBindTexture(GL_TEXTURE_RECTANGLE,Textures[0]);
+    [self reportError];
+    glTexStorage2D(GL_TEXTURE_RECTANGLE, 1, GL_RGB8, 16,16);
+    [self reportError];
+    
+    NSBundle  *appBundle = [NSBundle mainBundle];
+	NSString  *imageSource = [appBundle pathForResource:@"TNT" ofType:@"png"];
+    
+    textureImage = [[NSImage alloc] initWithContentsOfFile:imageSource];
+    
+    [view setImage:textureImage];
+    
+    NSBitmapImageRep *bits = [NSBitmapImageRep imageRepWithData:[textureImage TIFFRepresentation]];
+    
+    textureData = [bits bitmapData];
+    
+    
+    ////////////////
+    
     glUseProgram(programObject); //activates the shader program
     
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f); //sets clear color
@@ -125,15 +153,16 @@ GLfloat rotation = 0.0f;
     glEnable(GL_PRIMITIVE_RESTART);
     glPrimitiveRestartIndex(RESTART_CHAR);
     
-    _isAnimating = TRUE; //preparations complete!
-    _isReadyForDrawing = TRUE;
+    
     
     glEnable(GL_CULL_FACE);
     //glCullFace(GL_BACK);
     
     glDepthMask(GL_TRUE);
     
+    [self reportError];
     
+    _verbose = FALSE;
 }
 
 -(void)awakeFromNib
@@ -141,6 +170,7 @@ GLfloat rotation = 0.0f;
     _framesElapsed = 0;
     _isAnimating = FALSE;
     _isReadyForDrawing = FALSE;
+    _verbose = FALSE;
     [self use3_2Profile];
     
     NSTimer *timer = [NSTimer timerWithTimeInterval:1.0f/60.0f target:self selector:@selector(animationTimer) userInfo:nil repeats:YES];
@@ -182,10 +212,7 @@ GLfloat rotation = 0.0f;
 
 -(void)reportError
 {
-    int error = glGetError();
-    if (error != 0)
-    {
-        switch (error)
+    switch (glGetError())
         {
             case 0x0500:
                 NSLog(@"GL_INVALID_ENUM​ thrown at frame %d",_framesElapsed);
@@ -217,8 +244,12 @@ GLfloat rotation = 0.0f;
                 break;
                 
             default:
+                if (_verbose)
+                {
+                    NSLog(@"No Error");
+                }
                 break;
-        }
+        
     }
 }
 @end

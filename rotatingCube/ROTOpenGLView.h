@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <Cocoa/Cocoa.h>
 #import <OpenGL/gl3.h>
+#import <OpenGL/gl3ext.h>
 #import "Shader.h"
 
 @interface ROTOpenGLView : NSOpenGLView
@@ -16,11 +17,18 @@
     GLuint programObject;
     Shader *sh;
     
+    NSImage *textureImage;
+    
     GLuint VAOs[1];
     GLuint Buffers[3];
+    GLuint Textures[1];
+    
+    GLubyte *textureData;
+    
+    IBOutlet NSImageView *view;
     
 }
-@property BOOL isReadyForDrawing, isAnimating;
+@property BOOL isReadyForDrawing, isAnimating, verbose;
 @property GLuint framesElapsed;
 
 - (void) prepareOpenGL;
