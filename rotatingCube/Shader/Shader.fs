@@ -1,10 +1,16 @@
 #version 410 core
 
-layout(location = 3) in vec4 colorsOut;
-out vec4 fColor;
+uniform sampler2DRect tex;
 
-void
-main()
+in vec4 colorsOut;
+in vec2 tex_coordinate_out;
+
+layout(location = 0) out vec4 fColor;
+
+
+
+void main(void)
 {
-    fColor = colorsOut;
+    colorsOut;
+    fColor = texture(tex, tex_coordinate_out);
 }

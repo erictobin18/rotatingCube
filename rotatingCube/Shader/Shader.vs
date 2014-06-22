@@ -3,17 +3,16 @@
 layout(location = 0) in vec4 vPosition;
 layout(location = 1) in vec4 colorsIn;
 layout(location = 2) in mat4x4 modelViewPerspective;
+layout(location = 6) in vec2 texture_coordinate;
 
 out vec4 colorsOut;
+out vec2 tex_coordinate_out;
 
 
-void
-main()
+void main(void)
 {
-    //mat4x4 rotationMatrix = mat4(cosine,    -sine,  0,  0,
-    //                             sine,      cosine, 0,  0,
-    //                             0,         0,      1,  0,
-    //                             0,         0,      0,  1);
-    gl_Position = modelViewPerspective*vPosition;
     colorsOut = colorsIn;
+    tex_coordinate_out = texture_coordinate;
+    gl_Position = modelViewPerspective*vPosition;
+    
 }

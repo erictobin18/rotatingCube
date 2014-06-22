@@ -35,6 +35,17 @@ GLfloat colors[8][4] = {
                             {0,0,1,1.},
                             {0,0,0,1.},
 };
+GLfloat texCoords[8][2] =
+{
+                            {1.0,1.0},
+                            {1.0,1.0},
+                            {1.0,0.0},
+                            {1.0,0.0},
+                            {0.0,1.0},
+                            {0.0,1.0},
+                            {0.0,0.0},
+                            {0.0,0.0}
+};
 
 GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,4,6,RESTART_CHAR,1,5,3,7};
 
@@ -103,8 +114,9 @@ GLfloat rotation = 0.0f;
     
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]); //Binds the first element of Buffers to the GL_ARRAY_BUFFER target
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(colors),vertices, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(colors) + sizeof(texCoords),vertices, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
     glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(colors), colors);
+    glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(colors), sizeof(texCoords), texCoords);
     
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[1]);
     
@@ -116,13 +128,16 @@ GLfloat rotation = 0.0f;
     glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(vertices)));
     glEnableVertexAttribArray(1);
     
+    glVertexAttribPointer(6, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(vertices) + sizeof(colors)));
+    glEnableVertexAttribArray(6);
+    
     
     _isAnimating = TRUE; //preparations complete!
     _isReadyForDrawing = TRUE;
     
     ////////////////
     //Texture Init
-    _verbose = FALSE;
+    _verbose = TRUE;
     
     glGenTextures(1, Textures); //Frees 1 vertex array label and stores it in Textures[0]
     [self reportError];
@@ -142,6 +157,7 @@ GLfloat rotation = 0.0f;
     
     textureData = [bits bitmapData];
     
+    glTexSubImage2D(GL_TEXTURE_RECTANGLE, 0, 0, 0, 16, 16, GL_RGB, GL_UNSIGNED_BYTE, textureData);
     
     ////////////////
     
