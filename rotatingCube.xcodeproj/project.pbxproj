@@ -10,6 +10,7 @@
 		27C47A5718E247C8009D85FD /* TNT.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C47A5418E247C8009D85FD /* TNT.png */; };
 		27C47A5818E247C8009D85FD /* TNTbot.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C47A5518E247C8009D85FD /* TNTbot.png */; };
 		27C47A5918E247C8009D85FD /* TNTtop.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C47A5618E247C8009D85FD /* TNTtop.png */; };
+		27C7CF50195946A500969B4F /* redpixel.png in Resources */ = {isa = PBXBuildFile; fileRef = 27C7CF4F195946A500969B4F /* redpixel.png */; };
 		27E693D318DA9A93006E3ACE /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E693D218DA9A93006E3ACE /* Cocoa.framework */; };
 		27E693DD18DA9A93006E3ACE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 27E693DB18DA9A93006E3ACE /* InfoPlist.strings */; };
 		27E693DF18DA9A93006E3ACE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 27E693DE18DA9A93006E3ACE /* main.m */; };
@@ -42,6 +43,7 @@
 		27C47A5418E247C8009D85FD /* TNT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TNT.png; sourceTree = "<group>"; };
 		27C47A5518E247C8009D85FD /* TNTbot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TNTbot.png; sourceTree = "<group>"; };
 		27C47A5618E247C8009D85FD /* TNTtop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TNTtop.png; sourceTree = "<group>"; };
+		27C7CF4F195946A500969B4F /* redpixel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redpixel.png; sourceTree = "<group>"; };
 		27E693CF18DA9A93006E3ACE /* rotatingCube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = rotatingCube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E693D218DA9A93006E3ACE /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		27E693D518DA9A93006E3ACE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -144,6 +146,7 @@
 				27ED291818DA9E9B009F7966 /* Shader.vs */,
 				27ED291D18DA9EF7009F7966 /* ROTOpenGLView.h */,
 				27ED291E18DA9EF7009F7966 /* ROTOpenGLView.m */,
+				27C7CF4F195946A500969B4F /* redpixel.png */,
 				27C47A5418E247C8009D85FD /* TNT.png */,
 				27C47A5518E247C8009D85FD /* TNTbot.png */,
 				27C47A5618E247C8009D85FD /* TNTtop.png */,
@@ -260,6 +263,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C7CF50195946A500969B4F /* redpixel.png in Resources */,
 				27C47A5818E247C8009D85FD /* TNTbot.png in Resources */,
 				27E693DD18DA9A93006E3ACE /* InfoPlist.strings in Resources */,
 				27E693EB18DA9A94006E3ACE /* Images.xcassets in Resources */,

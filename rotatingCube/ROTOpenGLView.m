@@ -15,330 +15,74 @@
 
 const GLuint NumVertices = 6;
 
-GLfloat vertices[8][3] = {
-                            {.5,.5,.5},
-                            {.5,.5,-.5},
-                            {.5,-.5,.5},
-                            {.5,-.5,-.5},
-                            {-.5,.5,.5},
-                            {-.5,.5,-.5},
-                            {-.5,-.5,.5},
-                            {-.5,-.5,-.5}
-};
-GLfloat colors[8][4] = {
-                            {1,1,1,1.},
-                            {1,1,0,1.},
-                            {1,0,1,1.},
-                            {1,0,0,1.},
-                            {0,1,1,1.},
-                            {0,1,0,1.},
-                            {0,0,1,1.},
-                            {0,0,0,1.},
-};
-GLfloat texCoords[8][2] =
+GLfloat vertices[24][3] =
 {
-                            {16.0,16.0},
-                            {16.0,16.0},
-                            {16.0,0.0},
-                            {16.0,0.0},
-                            {0.0,16.0},
-                            {0.0,16.0},
-                            {0.0,0.0},
-                            {0.0,0.0}
-};
-GLfloat texData[16][16][3] =
-{
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
-    {
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0}
-    },
-    {
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0},
-        {255.0,255.0,255.0},
-        {0.0,0.0,0.0}
-    },
+    {-.5,-.5,.5},
+    {-.5,.5,.5},
+    {.5,-.5,.5},
+    {.5,.5,.5},
+    
+    
+    {.5,-.5,.5},
+    {.5,.5,.5},
+    {.5,-.5,-.5},
+    {.5,.5,-.5},
+    
+    
+    {.5,-.5,-.5},
+    {.5,.5,-.5},
+    {-.5,-.5,-.5},
+    {-.5,.5,-.5},
+    
+    
+    {-.5,-.5,-.5},
+    {-.5,.5,-.5},
+    {-.5,-.5,.5},
+    {-.5,.5,.5},
+    
+    {-.5,-.5,-.5},
+    {-.5,-.5,.5},
+    {.5,-.5,-.5},
+    {.5,-.5,.5},
+    
+    {-.5,.5,.5},
+    {-.5,.5,-.5},
+    {.5,.5,.5},
+    {.5,.5,-.5},
 };
 
-GLuint indices[20] = {0,1,2,3,6,7,4,5,0,1,RESTART_CHAR,0,2,4,6,RESTART_CHAR,1,5,3,7};
+GLfloat texCoords[24][2] =
+{
+    {0.0,1.0},
+    {0.0,0.0},
+    {1.0,1.0},
+    {1.0,0.0},
+    
+    {0.0,1.0},
+    {0.0,0.0},
+    {1.0,1.0},
+    {1.0,0.0},
+    
+    {0.0,1.0},
+    {0.0,0.0},
+    {1.0,1.0},
+    {1.0,0.0},
+    
+    {0.0,1.0},
+    {0.0,0.0},
+    {1.0,1.0},
+    {1.0,0.0},
+    
+    {0.0,0.0},
+    {0.0,1.0},
+    {1.0,0.0},
+    {1.0,1.0},
+    
+    {0.0,1.0},
+    {0.0,0.0},
+    {1.0,1.0},
+    {1.0,0.0},
+};
 
 GLfloat rotation = 0.0f;
 
@@ -374,7 +118,7 @@ GLfloat rotation = 0.0f;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[2]);
+    glBindBuffer(GL_ARRAY_BUFFER, Buffers[1]);
     glBufferData(GL_ARRAY_BUFFER, sizeof(matrix), matrix, GL_DYNAMIC_DRAW);
     
     glVertexAttrib4fv(2, matrix[0]);
@@ -385,9 +129,19 @@ GLfloat rotation = 0.0f;
     glBindVertexArray(VAOs[0]);
     
     
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    glDrawElements(GL_TRIANGLE_STRIP, 20, GL_UNSIGNED_INT, BUFFER_OFFSET(0));
-
+    glBindTexture(GL_TEXTURE_2D, Textures[0]);
+    
+    glDrawArrays(GL_TRIANGLE_STRIP,  0, 4);
+    glDrawArrays(GL_TRIANGLE_STRIP,  4, 4);
+    glDrawArrays(GL_TRIANGLE_STRIP,  8, 4);
+    glDrawArrays(GL_TRIANGLE_STRIP, 12, 4);
+    
+    glBindTexture(GL_TEXTURE_2D, Textures[1]);
+    glDrawArrays(GL_TRIANGLE_STRIP, 16, 4);
+    
+    glBindTexture(GL_TEXTURE_2D, Textures[2]);
+    glDrawArrays(GL_TRIANGLE_STRIP, 20, 4);
+    
     
     [[self openGLContext] flushBuffer];
 }
@@ -401,26 +155,20 @@ GLfloat rotation = 0.0f;
     glGenVertexArrays(1, VAOs); //Frees 1 vertex array label and stores it in VAOs[0]
     glBindVertexArray(VAOs[0]); //Makes first element of VAOs the active vertex array object
 
-    glGenBuffers(3, Buffers); //Frees 1 buffer label and stores it in Buffers[0]
+    glGenBuffers(2, Buffers); //Frees 3 buffer labels and stores them in Buffers
     
     glBindBuffer(GL_ARRAY_BUFFER, Buffers[0]); //Binds the first element of Buffers to the GL_ARRAY_BUFFER target
     
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(colors) + sizeof(texCoords),vertices, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
-    glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(colors), colors);
-    glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(colors), sizeof(texCoords), texCoords);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices) + sizeof(texCoords),vertices, GL_STATIC_DRAW); //loads vertices into the buffer currently bound to the GL_ARRAY_BUFFER target, which is the first element of Buffers
+
+    glBufferSubData(GL_ARRAY_BUFFER, sizeof(vertices), sizeof(texCoords), texCoords);
     
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Buffers[1]);
-    
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
     
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(0));
     glEnableVertexAttribArray(0);
     
-    glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(vertices)));
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(vertices)));
     glEnableVertexAttribArray(1);
-    
-    glVertexAttribPointer(6, 2, GL_FLOAT, GL_FALSE, 0, BUFFER_OFFSET(sizeof(vertices) + sizeof(colors)));
-    glEnableVertexAttribArray(6);
     
     
     _isAnimating = TRUE; //preparations complete!
@@ -430,26 +178,38 @@ GLfloat rotation = 0.0f;
     //Texture Init
     _verbose = FALSE;
     
-    glGenTextures(1, Textures); //Frees 1 vertex array label and stores it in Textures[0]
-    [self reportError];
-    glBindTexture(GL_TEXTURE_RECTANGLE,Textures[0]);
-    [self reportError];
-    glTexStorage2D(GL_TEXTURE_RECTANGLE, 1, GL_RGB8, 16,16);
+    glGenTextures(3, Textures);
+    
     [self reportError];
     
-    NSBundle  *appBundle = [NSBundle mainBundle];
-	NSString  *imageSource = [appBundle pathForResource:@"TNT" ofType:@"png"];
+    texSide = [self loadImageWithName:@"TNT"];
+    texBot = [self loadImageWithName:@"TNTbot"];
+    texTop = [self loadImageWithName:@"TNTtop"];
     
-    textureImage = [[NSImage alloc] initWithContentsOfFile:imageSource];
     
-    [view setImage:textureImage];
+    glBindTexture(GL_TEXTURE_2D,Textures[0]);
     
-    NSBitmapImageRep *bits = [NSBitmapImageRep imageRepWithData:[textureImage TIFFRepresentation]];
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 16, 16, 0, GL_RGBA, GL_UNSIGNED_BYTE, texSide);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     
-    textureData = [bits bitmapData];
     
-    //glTexSubImage2D(GL_TEXTURE_RECTANGLE, 0, 0, 0, 16, 16, GL_RGB, GL_UNSIGNED_BYTE, textureData);
-    glTexSubImage2D(GL_TEXTURE_RECTANGLE, 0, 0, 0, 16, 16, GL_RGB, GL_UNSIGNED_BYTE, texData);
+    glBindTexture(GL_TEXTURE_2D,Textures[1]);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 16, 16, 0, GL_RGBA, GL_UNSIGNED_BYTE, texBot);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    glBindTexture(GL_TEXTURE_2D,Textures[2]);
+    
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, 16, 16, 0, GL_RGBA, GL_UNSIGNED_BYTE, texTop);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+    
     ////////////////
     
     glUseProgram(programObject); //activates the shader program
@@ -463,13 +223,26 @@ GLfloat rotation = 0.0f;
     
     
     glEnable(GL_CULL_FACE);
-    //glCullFace(GL_BACK);
+    glFrontFace(GL_CW);
+    
     
     glDepthMask(GL_TRUE);
     
     [self reportError];
     
     _verbose = FALSE;
+}
+
+-(unsigned char *)loadImageWithName: (NSString *) name
+{
+    NSBundle  *appBundle = [NSBundle mainBundle];
+	NSString  *imageSource = [appBundle pathForResource:name ofType:@"png"];
+    
+    textureImage = [[NSImage alloc] initWithContentsOfFile:imageSource];
+    
+    NSBitmapImageRep *bits = [NSBitmapImageRep imageRepWithData:[textureImage TIFFRepresentation]];
+    
+    return [bits bitmapData];
 }
 
 -(void)awakeFromNib

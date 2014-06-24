@@ -20,12 +20,13 @@
     NSImage *textureImage;
     
     GLuint VAOs[1];
-    GLuint Buffers[3];
-    GLuint Textures[1];
+    GLuint Buffers[2];
+    GLuint Textures[3];
     
-    GLubyte *textureData;
+    GLubyte *texSide;
+    GLubyte *texTop;
+    GLubyte *texBot;
     
-    IBOutlet NSImageView *view;
     
 }
 @property BOOL isReadyForDrawing, isAnimating, verbose;
