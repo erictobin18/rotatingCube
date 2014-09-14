@@ -243,7 +243,7 @@ static void LinkProgram(GLuint program,
 
 - (id) initWithShadersInAppBundle:(NSString *)theShadersName
 {
-	if ( self = [super init] )
+	if ( self = [super init] )           
 	{
 		BOOL  loadedShaders = NO;
 		

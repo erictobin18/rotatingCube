@@ -118,15 +118,16 @@ GLfloat rotation = 0.0f;
     
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-    glBindBuffer(GL_ARRAY_BUFFER, Buffers[1]);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(matrix), matrix, GL_DYNAMIC_DRAW);
+    //glBindBuffer(GL_ARRAY_BUFFER, Buffers[1]);
+    //glBufferData(GL_ARRAY_BUFFER, sizeof(matrix), matrix, GL_DYNAMIC_DRAW);
+    glBindVertexArray(VAOs[0]);
     
     glVertexAttrib4fv(2, matrix[0]);
     glVertexAttrib4fv(3, matrix[1]);
     glVertexAttrib4fv(4, matrix[2]);
     glVertexAttrib4fv(5, matrix[3]);
     
-    glBindVertexArray(VAOs[0]);
+    
     
     
     glBindTexture(GL_TEXTURE_2D, Textures[0]);
@@ -209,6 +210,8 @@ GLfloat rotation = 0.0f;
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
+    
+    
     
     ////////////////
     
